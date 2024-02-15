@@ -6,6 +6,6 @@ EFIAPI
 efi_main (EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTable)
 {
 	InitializeLib(ImageHandle, SystemTable);
-	Print(L"%s\n", msg);
+	Print(L"Hello world\n");
 	return EFI_SUCCESS;
 }
