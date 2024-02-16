@@ -17,9 +17,8 @@ uefi.img: main.o
 	gnu-efi/x86_64/gnuefi/crt0-efi-x86_64.o main.o -o main.so -lgnuefi -lefi
 	objcopy --only-keep-debug main.so main.debug
 	objcopy -j .text -j .sdata -j .data -j .dynamic -j .dynsym  -j .rel -j .rela -j .rel.* \
-	 -j .rela.* -j .reloc --target efi-app-x86_64 --subsystem=10 main.so main.efi
+	 -j .rela.* -j .reloc -j .rodata --target efi-app-x86_64 --subsystem=10 main.so main.efi
 	dd if=/dev/zero of=uefi.img bs=512 count=93750
-
 
 clean:
 	rm main.o main.so main.efi uefi.img
